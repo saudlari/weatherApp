@@ -9,12 +9,13 @@
 <body>
     <div class="contenedor">
         <h1>🌤️ App do Clima</h1>
-        <form method="GET" class="search-form">
+        <form method="GET" class="search-form" style="display:flex; gap:8px;">
             <input 
                 type="text" name="cidade" 
                 placeholder="Digite uma cidade..." 
                 value="<?= htmlspecialchars($city) ?>" required>
             <button type="submit">Buscar</button>
+            <button type="button" onclick="getLocation(event)" title="Usar mi ubicación actual" style="min-width:44px;">📍</button>
         </form>
 
         <?php 
@@ -60,9 +61,25 @@
             </div>
         <?php else: ?>
             <div class="inicio">
-                <p>👆 Digite o nome de uma cidade acima e pressione "Buscar"</p>
+                <p>👆 Digite o nome de uma cidade acima y presione "Buscar",<br> o pulse 📍 para usar tu ubicación.</p>
             </div>
         <?php endif; ?>
     </div>
+    <script>
+    function getLocation(evt) {
+        evt.preventDefault(); 
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                window.location.href = "?lat=" + lat + "&lon=" + lon;
+            }, function(error) {
+                alert('No pudimos obtener tu ubicación');
+            });
+        } else {
+            alert('La Geolocalización no está soportada');
+        }
+    }
+    </script>
 </body>
 </html>

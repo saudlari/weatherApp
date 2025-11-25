@@ -74,4 +74,20 @@ class WeatherService
 
         return $data;
     }
+    public function getCurrentWeatherByCoordinates($lat, $lon)
+    {
+        if (empty($lat) || empty($lon)) {
+            return ['error' => true, 'message' => 'Latitud/longitud inválidas'];
+        }
+
+        $params = [
+            'lat' => $lat,
+            'lon' => $lon,
+            'appid' => $this->apiKey,
+            'units' => $this->units,
+            'lang' => $this->language
+        ];
+
+        return $this->makeRequest('weather', $params);
+    }
 }
