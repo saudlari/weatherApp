@@ -1,0 +1,11 @@
+
+define('WEATHER_API_KEY', 'SUA_CHAVE_API_AQUI');
+define('WEATHER_API_BASE_URL', 'https://api.openweathermap.org/data/2.5/');
+
+define('DEFAULT_CITY', 'São Paulo');
+define('DEFAULT_UNITS', 'metric');
+define('DEFAULT_LANGUAGE', 'pt_br');
+
+if (file_exists(__DIR__ . '/config.local.php')) {
+    require_once __DIR__ . '/config.local.php';
+}

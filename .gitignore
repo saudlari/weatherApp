@@ -1,0 +1,34 @@
+# Archivos de configuración con datos sensibles
+config.php
+config/config.local.php
+
+# Base de datos
+*.db
+*.sqlite
+database/*.db
+database/*.sqlite
+
+# Logs
+*.log
+logs/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Variables de entorno
+.env
+.env.local
+
