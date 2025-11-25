@@ -2,6 +2,7 @@
 config.php
 config/config.local.php
 
+
 # Base de datos
 *.db
 *.sqlite
