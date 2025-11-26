@@ -7,12 +7,12 @@ class WeatherService
     private $units;
     private $language;
 
-    public function __construct()
+    public function __construct($lang = null)
     {
         $this->apiKey = defined('WEATHER_API_KEY') ? WEATHER_API_KEY : '';
         $this->baseUrl = defined('WEATHER_API_BASE_URL') ? WEATHER_API_BASE_URL : 'https://api.openweathermap.org/data/2.5/';
         $this->units = defined('DEFAULT_UNITS') ? DEFAULT_UNITS : 'metric';
-        $this->language = defined('DEFAULT_LANGUAGE') ? DEFAULT_LANGUAGE : 'pt_br';
+        $this->language = $lang ?? (defined('DEFAULT_LANGUAGE') ? DEFAULT_LANGUAGE : 'en');
     }
 
     public function getCurrentWeather($cityName)
